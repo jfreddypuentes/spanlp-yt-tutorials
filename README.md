@@ -3,7 +3,9 @@ Repositorio que contiene código fuente de los ejercicios que realizamos en Yout
 
 [Canal de Youtube](https://www.youtube.com/channel/UCeQ2LduKNIZ7k3ndXvffuDw)
 
-## Ejecución video: [spanlp - Detección y Conteo de vulgaridades en textos con Python](https://youtu.be/2bsCIjonCHU)
+## Ejecución
+
+### video: [spanlp - Detección y Conteo de vulgaridades en textos con Python](https://youtu.be/2bsCIjonCHU)
 1) Clonar el código fuente:
 ``` shell
 git clone https://github.com/jfreddypuentes/spanlp-yt-tutorials.git
