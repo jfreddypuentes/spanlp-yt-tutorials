@@ -25,4 +25,4 @@ python3 main.py
 ```
 
 **Nota:**
-Si va a usar jupyter notebook, solo abra jupyter, abra la carpeta del proyecto, abra el archivo main.ipynb y ejecute.
+_Si va a usar jupyter notebook, solo abra jupyter, abra la carpeta del proyecto, abra el archivo main.ipynb y ejecute._
