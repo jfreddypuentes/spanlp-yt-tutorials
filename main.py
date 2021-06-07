@@ -11,12 +11,12 @@ def leer_archivo(nombre_archivo:str='', separador_datos:str='', columna:str=''):
     return tweets
 
 
-def validar_vulgaridades(data:list=None, pais:list=None):
+def validar_vulgaridades(data:list=None, pais:list=None, incluir:list=None, excluir:list=None):
     if data is None or len(data) == 0:
         raise Exception("Oiga! para validar vulgaridades debe enviar datos. esta enviando datos nulos o vacios.")
     
     contador_palabrotas = 0
-    validador = Palabrota(countries=pais)
+    validador = Palabrota(countries=pais, include=incluir, exclude=excluir)
     
     for texto in data:
         if isinstance(texto, str):
@@ -43,9 +43,24 @@ def pedir_pais():
     }.get(pais_seleccionado, None)
 
 
+def pedir_palabras_incluir_excluir():
+    print("¿Desea incluir o excluir palabras en la busqueda? (SI/NO):")
+    quiere_incluir_excluir = input("Respuesta (SI/NO) :")
+    if len(quiere_incluir_excluir) > 0 and quiere_incluir_excluir.lower() == "si":
+        print("Ingrese la palabras a INCLUIR (separadas por coma (,)) :")
+        palabras_a_incluir = input("Incluir:")
+        print("Ingrese la palabras a EXCLUIR (separadas por coma (,)) :")
+        palabras_a_excluir = input("Excluir:")
+        return (palabras_a_incluir.split(","), palabras_a_excluir.split(","))
+    else:
+        return (None,None)
+
+
 comments = leer_archivo(nombre_archivo='data/tweets.csv', separador_datos='|', columna='comment_1')
+print(comments)
 pais = pedir_pais()
-contiene, cantidad = validar_vulgaridades(comments, pais)
+palabras_a_incluir, palabras_a_excluir = pedir_palabras_incluir_excluir()
+contiene, cantidad = validar_vulgaridades(comments, pais, palabras_a_incluir, palabras_a_excluir)
 
 print(f"Los datos contienen {cantidad} vulgaridades para {pais}." if contiene else "Los datos no contienen vulgaridades.")
 
